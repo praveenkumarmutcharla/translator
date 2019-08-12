@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Google Transliterate API
+      google.load("elements", "1", {
+            packages: "transliteration"
+          });
+
+      function onLoad() {
+        var options = {
+          sourceLanguage: 'en',
+          destinationLanguage: ['hi','kn','ml','ta','te'],
+          shortcutKey: 'ctrl+g',
+          transliterationEnabled: true
+        };
+        var control = new google.elements.transliteration.TransliterationControl(options);
+
+        var ids = ["trans" ];
+        control.makeTransliteratable(ids);
+        control.showControl('translControl');
+      }
+      google.setOnLoadCallback(onLoad);
+
+    </script>
+  </head>
+  <body style="background: antiquewhite">
+    <span>
+    <label> Select language from dropdown</label><div id='translControl'></div>
+    </span>
+    <div>Enter words in English and click enter to convert the word to selected language</div>
+    <textarea id="trans" style="width:600px;height:200px"></textarea>
+	<div>Improvising the application to convert each character dynamically as Google API  requires API_Key to convert each character</div>
+  </body>
+</html>
